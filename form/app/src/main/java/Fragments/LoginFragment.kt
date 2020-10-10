@@ -1,11 +1,16 @@
 package Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import com.example.form.Activity.MainActivity
+import com.example.form.Activity.RegisterActivity
 import com.example.form.R
+import kotlinx.android.synthetic.main.fragment_login.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,13 +34,23 @@ class loginFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        val view:View = inflater.inflate(R.layout.fragment_login, container, false)
+        val buttonRegister: Button = view.findViewById(R.id.registerBtn)
+        val buttonLogin: Button = view.findViewById(R.id.loginBtn)
+        buttonLogin.setOnClickListener(){
+            val intent = Intent(this.context, MainActivity::class.java);
+            startActivity(intent);
+        }
+        buttonRegister.setOnClickListener(){
+            val intent = Intent(this.context, RegisterActivity::class.java);
+            startActivity(intent);
+        }
+        return view;
     }
 
     companion object {
