@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import com.example.form.Activity.MainActivity
 import com.example.form.Activity.RegisterActivity
 import com.example.form.R
@@ -44,6 +45,15 @@ class loginFragment : Fragment() {
         val buttonLogin: Button = view.findViewById(R.id.loginBtn)
         buttonLogin.setOnClickListener(){
             val intent = Intent(this.context, MainActivity::class.java);
+            val email = intent.getStringExtra("email");
+            val senha = intent.getStringExtra("senha")
+            if(R.id.email.toString() == email && R.id.senha.toString() == senha){
+                startActivity(intent)
+            }else{
+                Toast.makeText(this.context, "Digite um usuário válido",Toast.LENGTH_SHORT).show();
+            }
+
+
             startActivity(intent);
         }
         buttonRegister.setOnClickListener(){
